@@ -1,0 +1,69 @@
+package com.capgemini.service;
+
+import com.capgemini.beans.Student;
+
+public class StudentSchedular {
+	
+	private Student [] students = new Student[10];
+	private int counterstudent;
+	private String[] courseNames;
+	
+	public String addstudent (int rollnumber,String name,String[] courseNames)
+	{
+		
+		
+		students [counterstudent ++] = new Student(rollnumber,name,courseNames);
+		return "student added successfully";}
+	
+	public void showallstudents ()
+	{
+		for (int i = 0;i<counterstudent;i++)
+		{
+		System.out.println(students[i].getRollnumber());
+		System.out.println(students[i].getName());
+		for(int j = 0;j<students[i].getCourseNames().length;j++)
+		System.out.println(students[i].getCourseNames()[j]);
+		
+		
+		}
+		
+	}
+	
+	public void showBySubjects (String courseNames)
+	{
+		int flag = 0;
+		for(int i = 0;i<counterstudent;i++)
+		{
+			if (students[i].getCourseNames()[i] == courseNames)
+			{flag++;
+		
+			System.out.println(students[i].getRollnumber());
+			System.out.println("name :");
+			System.out.println(students[i].getName());
+		
+		}
+		if (flag==0)
+			System.out.println("roll no not found");
+	}
+	}
+	
+	
+	
+	
+	public void showByRollNo (int rollnumber)
+	{
+		int flag = 0;
+		for(int i = 0;i<counterstudent;i++)
+		{
+			if (students[i].getRollnumber() == rollnumber)
+			{flag++;
+			System.out.println(students[i].getName());
+			System.out.println("subjects :");
+			for(int j = 0;j<students[i].getCourseNames().length;j++)
+				
+				System.out.println(students[i].getCourseNames()[j]);}
+		}
+		if (flag==0)
+			System.out.println("roll no not found");
+	}
+}

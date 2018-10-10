@@ -1,0 +1,110 @@
+package com.capgemini.view;
+
+import java.util.Scanner;
+
+import com.capgemini.service.StudentSchedular;
+
+public class Admin {
+	
+	private static Scanner sc=new Scanner(System.in);
+	
+	private static StudentSchedular studSch = new StudentSchedular();
+
+	private static String[] courseNames;
+
+	public static void main(String[] args) {
+		showMenu(); }
+		
+
+	
+
+ 
+private static void showMenu() {
+	int choice;
+	
+	while (true){
+	
+		System.out.println("1.add student");
+		System.out.println("2.show all students");
+		System.out.println("3.show by rollnumber");
+		System.out.println("4. show by subjects");
+		
+		System.out.println("Enter your choice");
+		choice=sc.nextInt();
+	
+
+		
+	switch(choice)
+	{
+	case 1:addStudentDetails();
+	 break;
+	 
+	case 2:showAllstudents();
+	break;
+	
+	case 3 :showByRollNo();
+	break;
+	
+	case 4 : showBySubjects();
+
+	default:System.out.println("Sorry entered wrong choice");
+	 
+	}
+	}
+}
+private static void showBySubjects()
+{
+	System.out.println("Enter the subjects");
+
+	String courseNames= sc.next() ;
+	
+	studSch.showBySubjects(courseNames);
+}
+
+	private static void showAllstudents()
+	{
+		studSch.showallstudents();
+	}
+	
+	private static void showByRollNo()
+	{
+		System.out.println("Enter the roll no");
+		int rollnumber = sc.nextInt();
+		studSch.showByRollNo(rollnumber);
+	}
+	
+	
+	private static void addStudentDetails()
+	
+	
+	{System.out.println("Enter roll number");
+	int rollNumber=sc.nextInt();
+	System.out.println("Enter name");
+	String name = sc.next();
+	System.out.println("Enter no of course");
+	int num = sc.nextInt();
+	courseNames = new String[num];
+	System.out.println("Enter course names");
+	
+	
+	for (int j = 0;j<num;j++)
+		
+		
+	{ courseNames[j]= sc.next() ;}
+	System.out.println(studSch.addstudent( rollNumber, name,courseNames));
+	}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
